@@ -1,0 +1,10 @@
+# Python object files
+*.py[cd]
+MANIFEST
+/build
+/dist
+/tmp/*
+# Vim swap files
+*.swp
+/doc
+/rendered

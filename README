@@ -1,0 +1,15 @@
+
+Hippo is a host repository for tracking system configuration files.
+
+
+Installation
+------------
+
+
+
+Dependencies
+------------
+
+Git v1.7.1 or later.
+GitPython v0.3
+
