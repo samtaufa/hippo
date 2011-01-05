@@ -6,7 +6,7 @@ HIPPO_DIR = "/var/hippo"
 HIPPO_BASE = "/"
 
 COMMANDS = [
-    "init", "add", "commit", "status", "rm", "mv",
+    "init", "add", "commit", "clone", "status", "rm", "mv",
     "log", "refresh", "show", "push", "checkout", "diff"
 ]
 
@@ -132,3 +132,6 @@ class Hippo:
         self._cmd("checkout", args)
         self.apply_manifest()
 
+    def clone(self, args):
+        self._cmd("clone", args)
+        self.apply_manifest()
