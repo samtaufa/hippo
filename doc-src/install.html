@@ -1,0 +1,50 @@
+
+
+## Installation Sequence
+
+Dependencies
+
+-   git
+-   gitpython
+
+Base System
+
+- hippo
+
+### GIT
+
+Install GIT v1.7.1 or later for your platform from the [GIT Pages](http://git-scm.com/)
+
+### gitpython
+
+Install [GitPython](http://gitorious.org/git-python) v0.3 or later, one method is as in the below.
+
+-   Install the Python Package Installer PIP
+-   Install GitPython
+
+#### Install the Python Package Installer PIP
+
+In OpenBSD you may need to previous have installed py-setuptools
+
+<pre>
+$ curl -O https://github.com/pypa/raw/master/contrib/get-pip.py
+$ sudo python get-pip.py
+</pre>
+
+#### Install GitPython
+
+<pre>
+$ sudo pip install gitpython
+</pre>
+
+### Hippo
+
+Get a copy of hippo from [github.com](https://github.com/cortesi/hippo)
+
+<pre>
+$ git clone https://github.com/cortesi/hippo.git
+$ cd hippo
+$ sudo python setup.py install
+</pre>
+
+
