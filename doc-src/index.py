@@ -20,5 +20,6 @@ ns.index_contents = file("../README").read()
 
 pages = [
     Page("index.html", "introduction"),
+    Page("install.html", "Install"),    
     Page("admin.html", "administrivia")
 ]
