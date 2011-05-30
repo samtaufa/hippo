@@ -1,33 +1,83 @@
 from distutils.core import setup
+import fnmatch, os.path
 
-long_description = """
-Hippo is a host repository for tracking system configuration files.
+def _fnmatch(name, patternList):
+    for i in patternList:
+        if fnmatch.fnmatch(name, i):
+            return True
+    return False
 
-Hippo is a thin layer built on top of Git that simplifies managing a host-wide repository of files with metadata (permissions and ownership). Conceptually, Hippo simply serializes metadata before certain Git commands are run, and restores file metadata after others. By default, the host-wide git repository lives in /var/hippo/.git, metadata is tracked in /var/hippo/manifest.
 
-Hippo requires Python 2.6 or newer.
-"""
+def _splitAll(path):
+    parts = []
+    h = path
+    while 1:
+        if not h:
+            break
+        h, t = os.path.split(h)
+        parts.append(t)
+    parts.reverse()
+    return parts
 
-version = "0.1.0"
 
+def findPackages(path, dataExclude=[]):
+    """
+        Recursively find all packages and data directories rooted at path. Note
+        that only data _directories_ and their contents are returned -
+        non-Python files at module scope are not, and should be manually
+        included.
+        
+        dataExclude is a list of fnmatch-compatible expressions for files and
+        directories that should not be included in pakcage_data.
+
+        Returns a (packages, package_data) tuple, ready to be passed to the
+        corresponding distutils.core.setup arguments.
+    """
+    packages = []
+    datadirs = []
+    for root, dirs, files in os.walk(path, topdown=True):
+        if "__init__.py" in files:
+            p = _splitAll(root)
+            packages.append(".".join(p))
+        else:
+            dirs[:] = []
+            if packages:
+                datadirs.append(root)
+
+    # Now we recurse into the data directories
+    package_data = {}
+    for i in datadirs:
+        if not _fnmatch(i, dataExclude):
+            parts = _splitAll(i)
+            module = ".".join(parts[:-1])
+            acc = package_data.get(module, [])
+            for root, dirs, files in os.walk(i, topdown=True):
+                sub = os.path.join(*_splitAll(root)[1:])
+                if not _fnmatch(sub, dataExclude):
+                    for fname in files:
+                        path = os.path.join(sub, fname)
+                        if not _fnmatch(path, dataExclude):
+                            acc.append(path)
+                else:
+                    dirs[:] = []
+            package_data[module] = acc
+    return packages, package_data
+
+
+
+
+long_description = file("README").read()
+packages, package_data = findPackages("libhippo")
+version = "0.1"
 setup(
         name = "hippo",
         version = version,
-        description = "Hippo is a host repository for tracking system configuration files.",
+        description = "Managing host configuration as git repositories.",
         long_description = long_description,
         author = "Aldo Cortesi",
         author_email = "aldo@corte.si",
-        url = "http://dev.nullcube.com",
-        download_url="http://dev.nullcube.com/download/hippo-%s.tar.gz"%version,
-        packages = ["libhippo"],
+        url = "http://github.com/cortesi/hippo",
+        packages = packages,
+        package_data = package_data,
         scripts = ["hippo"],
-        classifiers = [
-            "Intended Audience :: Developers",
-            "License :: OSI Approved :: MIT License",
-            "Development Status :: 4 - Beta",
-            "Programming Language :: Python",
-            "Operating System :: OS Independent",
-            "Topic :: Software Development :: Testing",
-            "Topic :: Software Development :: Quality Assurance",
-        ]
 )

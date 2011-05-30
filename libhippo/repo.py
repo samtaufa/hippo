@@ -73,7 +73,7 @@ class Hippo:
     def commit(self, args):
         self.refresh_manifest()
         # We invoke git directly with Popen, because git-python has no
-        # mechanism to return interactive controll to the user, so we can use
+        # mechanism to return interactive controll to the user so we can use
         # the editor.
         os.environ["GIT_WORK_TREE"] = self.base
         os.environ["GIT_DIR"] = os.path.join(self.datadir, ".git")
