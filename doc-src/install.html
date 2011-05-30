@@ -37,6 +37,23 @@ $ sudo python get-pip.py
 $ sudo pip install gitpython
 </pre>
 
+This will pull down and install some dependencies, and you should be fine if you're
+not using OpenBSD.
+
+In OpenBSD 4.9, we have to uninstall gitpython and reinstall from source.
+
+<pre>
+$ sudo pip uninstall gitpython
+</pre>
+
+Download the source code
+
+<pre>
+$ git clone git://github.com/gitpython-developers/gitdb.git
+$ sudo python setup.py install
+</pre>
+
+###
 ### Hippo
 
 Get a copy of hippo from [github.com](https://github.com/cortesi/hippo)
