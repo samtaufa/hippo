@@ -19,37 +19,17 @@ Install GIT v1.7.1 or later for your platform from the [GIT Pages](http://git-sc
 
 Install [GitPython](http://gitorious.org/git-python) v0.3 or later, one method is as in the below.
 
--   Install the Python Package Installer PIP
--   Install GitPython
-
-#### Install the Python Package Installer PIP
-
-In OpenBSD you may need to previous have installed py-setuptools
-
-<pre>
-$ curl -O https://github.com/pypa/raw/master/contrib/get-pip.py
-$ sudo python get-pip.py
-</pre>
-
-#### Install GitPython
-
-<pre>
-$ sudo pip install gitpython
-</pre>
-
-This will pull down and install some dependencies, and you should be fine if you're
-not using OpenBSD.
-
-In OpenBSD 4.9, we have to uninstall gitpython and reinstall from source.
-
-<pre>
-$ sudo pip uninstall gitpython
-</pre>
-
-Download the source code
-
 <pre>
 $ git clone git://github.com/gitpython-developers/gitdb.git
+$ cd gitdb
+$ sudo python setup.py install
+$ cd ..
+$ git clone git://github.com/gitpython-developers/async.git
+$ cd async
+$ sudo python setup.py install
+$ cd ..
+$ git clone git://github.com/gitpython-developers/GitPython.git
+$ cd GitPython
 $ sudo python setup.py install
 </pre>
 
