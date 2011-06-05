@@ -7,7 +7,7 @@ HIPPO_BASE = "/"
 
 COMMANDS = [
     "init", "add", "commit", "clone", "status", "rm", "mv",
-    "log", "refresh", "show", "push", "checkout", "diff"
+    "log", "refresh", "show", "push", "checkout", "diff", "remote"
 ]
 
 class Hippo:
@@ -120,6 +120,10 @@ class Hippo:
 
     def push(self, args):
         self._cmd("push", args)
+
+    def remote(self, args):
+        self._cmd("remote", args)
+
     # end nocover
 
     def rm(self, args):
