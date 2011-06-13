@@ -1,7 +1,5 @@
 import countershape
 from countershape import Page, Directory, PythonModule, markup
-import countershape.grok
-
 
 this.layout = countershape.Layout("_layout.html")
 this.markup = markup.Markdown()
@@ -21,5 +19,6 @@ ns.index_contents = file("../README").read()
 pages = [
     Page("index.html", "introduction"),
     Page("install.html", "Install"),    
-    Page("admin.html", "administrivia")
+    Page("admin.html", "administrivia"),
+    PythonModule("../libhippo", "Source")
 ]
