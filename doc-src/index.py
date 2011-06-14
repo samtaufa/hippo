@@ -14,11 +14,15 @@ ns.sidebar = countershape.widgets.SiblingPageIndex(
           )
 
 ns.license = file("../LICENSE").read()
-ns.index_contents = file("../README").read()
+ns.index_contents = file("../README.md").read()
 
 pages = [
-    Page("index.html", "introduction"),
-    Page("install.html", "Install"),    
-    Page("admin.html", "administrivia"),
-    PythonModule("../libhippo", "Source")
+    Page("index.md", 
+        title="Introduction",
+        pageTitle="Introduction to Hippo"
+        ),
+    Directory("intro"),
+        
+    Page("admin.md", "administrivia"),
+    PythonModule( src="../libhippo", name= "Source", title="Source")
 ]
