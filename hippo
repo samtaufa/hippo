@@ -28,9 +28,9 @@ def main():
     for i in sys.argv:
         if i in repo.COMMANDS:
             subcommand = sys.argv.index(i)
+            break
             
     (options, args) = parser.parse_args(sys.argv[1:subcommand or len(sys.argv)])
-
     r = repo.Hippo(os.path.abspath(options.hippodir), os.path.abspath(options.base))
     if subcommand:
         getattr(r, sys.argv[subcommand])(sys.argv[subcommand+1:])
