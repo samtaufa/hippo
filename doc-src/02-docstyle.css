@@ -25,15 +25,40 @@ a {
 }
 
 #bd h1 {
-    font-size: 1.6em;
+    font-size: 2em;
     margin-top: 5px;
     margin-bottom: 5px;
+	background-color: #015c65;
+	color: white;
 }
 
 #bd h2 {
-    font-size: 1.2em;
+    font-size: 1.8em;
     margin-top: 5px;
     margin-bottom: 5px;
+	background-color: #028E9B;
+	color: white;
+}
+
+#bd h3 {
+    font-size: 1.6em;
+    margin-top: 5px;
+    margin-bottom: 0px;
+	background-color: #35c0cd;
+	color: white;
+}
+
+#bd h4 {
+    font-size: 1.2em;
+    margin-top: 5px;
+    margin-bottom: 0px;
+	color: #5ec4cd;
+}
+
+#bd h5 {
+    font-size: 1em;
+    margin-top: 5px;
+    margin-bottom: 0px;
 }
 
 #ft {

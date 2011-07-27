@@ -1,19 +1,33 @@
-## Installation Sequence
+# Installation
 
-Dependencies
+Hippo installation is straight forward, with few dependencies that 
+can be installed using standard packages for your System
+of choice.
 
+The major dependencies to get Hippo working are:
+
+-	[Python](#python) 2.5, 2.6, 2.7
 -   [Git](#git) v1.7.1 or later.
 -   [GitPython](#gitpython) v0.3 or later
+	* [setuptools](http://pypi.python.org/pypi/setuptools) 0.6c11 or later
 
-Base System
+Then of course, the installation of Hippo itself.
 
 - hippo
 
-<a name="git"></a>
+## <a name="python"></a> Python
 
-### GIT
+Hippo works happily using Python 2.6, 2.7. Other versions may
+also be compatible.
 
-Install GIT v1.7.1 or later for your platform from the [GIT Pages](http://git-scm.com/)
+Install the [Python of Choice](http://www.python.org) for your host.
+
+## <a name="git"></a> Git
+
+&#91;Ref: [Git Community Book - Installing Git](http://book.git-scm.com/2_installing_git.html)
+]
+
+Install Git v1.7.1 or later for your platform from the [Git Pages](http://git-scm.com/)
 
 Git is a free & open source, distributed version control system designed 
 to handle everything from small to very large projects with speed and 
@@ -23,13 +37,36 @@ Every Git clone is a full-fledged repository with complete history and full
 revision tracking capabilities, not dependent on network access or a 
 central server. Branching and merging are fast and easy to do.
 
-<a name="gitpython"></a>
+### Setup and Initialisation
 
-### GitPython
+&#91;Ref: [Pro Git: Getting Started](http://progit.org/book/ch1-5.html) ]
 
-Install [GitPython](http://gitorious.org/git-python) v0.3 or later. You
-should be able to use 
+For the new Git user, a few house-keeping things are useful for shared 
+administration environments to ease tracking of who commits changes
+to the Hippo repository.  If you haven't already configured your Git
+environment, keep a reference handy such as: [A tour of git: the basics](http://cworth.org/hgbook-git/tour/)
+or [Git Community Book: Setup and Initialization](http://book.git-scm.com/2_setup_and_initialization.html) 
+and configure Git such as the below example:
 
+<!--(block|syntax("bash"))-->
+$ git config --global user.name "Your Name"
+$ git config --global user.email "you@example.com"
+<!--(end)-->
+ 
+Which should update/create your standard Git configuration file, usually
+stored at ~/.gitconfig.
+
+If your configuration is sane, you should get a sane result from the below
+command-line
+
+<!--(block|syntax("bash"))-->
+$ git config user.name
+<!--(end)-->
+
+
+## <a name="gitpython"></a> GitPython
+
+Install [GitPython](https://github.com/gitpython-developers/GitPython) v0.3 or later.
 
 __On most Unix-like systems, you'll probably need to run these commands as root or using sudo__
 
@@ -45,15 +82,21 @@ Or pip:
 $ sudo pip install GitPython
 <!--(end)-->
 
-Or, if you do not have setuptools/distribute installed, use the download link
-to download the source package, and install it in the normal fashion. The
-following procedures install GitPython and immediate dependencies.
+### Source Install
+
+If the above doesn't work for you, the following
+are the dependencies for a source install. Obviously, if you can install any of
+the dependencies from your OS binary packages, then that may be preferable for
+compatability, maintenance.
+
+The following procedures install immediate dependencies, and GitPython.
 
 -   GitDB 
 -   async
+-	setuptools
 -   GitPython
 
-#### GitDB 
+#### GitDB
 
 [GitDB](https://github.com/gitpython-developers/gitdb) 
 allows you to access bare git repositories for reading and writing. 
@@ -105,6 +148,13 @@ Modify the setup.py file as appropriate and install.
 $ sudo python setup.py install
 <!--(end)-->
 
+#### setuptools
+
+The GitPython installation process is dependent on setuptools.
+
+Download the [source](http://pypi.python.org/pypi/setuptools#files) and
+install per software configuration.
+
 #### GitPython
 
 [GitPython](https://github.com/gitpython-developers/gitpython) is a python
@@ -118,7 +168,9 @@ $ cd GitPython
 $ sudo python setup.py install
 <!--(end)-->
 
-### Hippo
+## Hippo
+
+&#91;Ref: [https://github.com/cortesi/hippo)](https://github.com/cortesi/hippo)]
 
 Install Hippo from the source at [github.com](https://github.com/cortesi/hippo)
 

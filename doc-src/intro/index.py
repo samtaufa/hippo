@@ -2,7 +2,7 @@ import countershape
 from countershape import markup
 from countershape.doc import *
 
-this.markup = markup.Markdown(extras=["code-friendly"])
+this.markup = markup.Markdown( extras=["code-friendly"] )
 
 pages = [
             Page(
@@ -12,15 +12,22 @@ pages = [
             ),           
 
             Page(
-                "usage.md",
-                title="Usage",
-                pageTitle = "Usage"
+                "client.md",
+                title="Client",
+                pageTitle = "Client Use"
             ),           
 
             Page(
-                "config.md",
-                title="Config",
-                pageTitle = "Path Config"
+                "server.md",
+                title="Server",
+                pageTitle = "Server Configuration"
             ),
+			
+            Page(
+                "gitweb.md",
+                title="Gitweb",
+                pageTitle = "Gitweb Interface"
+            ),
+						
         ]
         

@@ -1,0 +1,132 @@
+
+.pageindex a {
+    color: #437095;
+}
+
+
+.pageindex a:hover {
+    color: #437095;
+}
+
+
+body {
+    font-family:Georgia,serif;
+    font-size:15px;
+}
+
+#hd h1 {
+    font-size:      2em;
+    font-weight:    bold;
+    border-bottom-width: 1px;
+    border-bottom-style: solid;
+    border-bottom-color: #aaaaaa;
+    margin-bottom:  15px;
+}
+#hd h1 {
+    letter-spacing: 3px;
+    font-size: 2.5em;
+    line-height: 100%;
+    margin: 0.3em 0;
+    font-weight: normal;
+}
+
+#bd {
+    padding: 20px;
+}
+
+#bd h1 {
+    font-size: 2em;
+    margin-top: 5px;
+    margin-bottom: 5px;
+	background-color: #015c65;
+	color: white;
+}
+
+#bd h2 {
+    font-size: 1.8em;
+    margin-top: 5px;
+    margin-bottom: 5px;
+	background-color: #028E9B;
+	color: white;
+}
+
+#bd h3 {
+    font-size: 1.6em;
+    margin-top: 5px;
+    margin-bottom: 0px;
+	background-color: #35c0cd;
+	color: white;
+}
+
+#bd h4 {
+    font-size: 1.2em;
+    margin-top: 5px;
+    margin-bottom: 0px;
+	color: #5ec4cd;
+}
+
+#bd h5 {
+    font-size: 1em;
+    margin-top: 5px;
+    margin-bottom: 0px;
+}
+
+pre {
+    border-bottom:      1px solid #CCCCCC;
+    border-top:         1px solid #CCCCCC;
+    padding: 5px;
+    background-color: #e0e0e0;
+}
+
+.highlight pre {
+    border-bottom:      2px solid #BC7A00;
+    border-top:         2px solid #BC7A00;
+    padding:            10px;
+    background:         #F8F8F8 none repeat scroll 0% 0%;
+    margin-bottom:      10px;
+    overflow:           auto;
+}
+
+.grokdoc {
+    background:         transparent !important;
+}
+
+.grokdoc_module {
+    background:         #F8F8F8;
+    padding: 5px;
+}
+
+.grokdoc_vartable {
+    margin-bottom: 10px;
+}
+
+.grokdoc_vartable p {
+    margin: 0px;
+}
+
+.grokdoc_class {
+    background:         #F8F8F8;
+}
+
+.output {
+    border-bottom:      1px solid #CCCCCC;
+    border-top:         1px solid #CCCCCC;
+    padding:            10px;
+    background:         #F8F8F8 none repeat scroll 0% 0%;
+    margin-bottom:      10px;
+    overflow:           auto;
+}
+
+#ft {
+    padding:    10px 15px 17px 10px;
+    font-size:  0.8em;
+}
+
+dl {
+    margin: 0px;
+    margin-top: 5px;
+}
+
+dt {
+    font-weight:  bold;
+}
