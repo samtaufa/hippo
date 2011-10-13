@@ -1,5 +1,3 @@
-# Server Configuration
-
 Installing/configuring the **Central Repository** involves the following:
 
 - Host [User Group](#group)
@@ -14,14 +12,20 @@ Members of this group will include all administrators
 pushing updates to the repositories. For example,
 a group called *hippo* will have at least your name?
 
+<!--(block|syntax("bash"))-->
+# group add _hippo
+# usermod -G _hippo samt
+# usermod -G _hippo charlie
+<!--(end)-->
+
 ### <a name="path"></a> Repository Path
 
 For our sample repository, we create a path that matches
-our standard repository configurations. 
+our *local standard* repository configurations. 
 
 <!--(block|syntax("bash"))-->
-# mkdir -p /var/data/repos
-# chown root:hippo /var/data/repos
+# mkdir -p /var/repos
+# chown root:_hippo /var/repos
 <!--(end)-->
 
 ### <a name="new"></a> Adding a New Repository
@@ -29,18 +33,28 @@ our standard repository configurations.
 To add a new host to the repository
 
 - Create the necessary path
+- Push updates from the client
+
+#### Create the necessary path
+
+Create the path, and then initialise the GIT repository within the path.
 
 <!--(block|syntax("bash"))-->
-# mkdir /var/data/repos/hostname.git
-# cd /var/data/repos/hostname.git
+# mkdir /var/repos/hostname.git
+# cd /var/repos/hostname.git
 # git init --bare --shared=group
 <!--(end)-->
+
+Note that the *--shared=group* uses the keyword *group*, not the
+*group-name* used for the server user/group.
+
+#### Push updates from the client.
 
 On the client host:
 
 To get our data across from the client to the server, we *hippo push*
 
 <!--(block|syntax("bash"))-->
-$ hippo push username@server:/var/data/repos/hostname.git master
+$ hippo push username@server:/var/repos/hostname.git master
 <!--(end)-->
 

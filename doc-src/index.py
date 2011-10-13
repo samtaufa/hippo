@@ -6,10 +6,13 @@ this.layout = countershape.Layout("_layout.html")
 this.markup = markup.Markdown( extras=["code-friendly"] )
 
 ns.docTitle = "hippo"
+ns.titlePrefix = "hippo "
 ns.docMaintainer = "Aldo Cortesi"
 ns.docMaintainerEmail = "aldo@corte.si"
 ns.copyright = "Aldo Cortesi 2011"
-ns.head = countershape.template.Template(None, "<h1> @!docTitle!@ - @!this.title!@ </h1>")
+ns.head = countershape.template.Template(None, "<h1> @!docTitle!@ - @!this._pageTitle!@ </h1>")
+
+this.titlePrefix = ns.titlePrefix
 
 this.stdHeaders = [
     model.UrlTo("media/css/reset-fonts-grids-base.css"),
@@ -35,15 +38,36 @@ ns.index_contents = file("../README.md").read()
 pages = [
     Page("index.md", 
         title="Overview",
-        pageTitle="Hippo: an Overview"
+        pageTitle="an Overview"
         ),
     Page("intro.md", 
         title="Introduction",
-        pageTitle="Hippo: a quick Introduction"
+        pageTitle="a quick Introduction"
         ),
-	
     Directory("intro"),
         
-    Page("admin.md", "administrivia"),
+	Page(
+		"client.md",
+		title="Client",
+		pageTitle = "Client Use"
+	),           
+    Directory("client"),
+
+	Page(
+		"server.md",
+		title="Server",
+		pageTitle = "Server Configuration"
+	),
+    Directory("server"),
+	
+	Page(
+		"gitweb.md",
+		title="Gitweb",
+		pageTitle = "Gitweb Interface"
+	),
+    Page("admin.md", 
+		title="administrivia",
+		pageTitle = "About Us"
+		),
     PythonModule( src="../libhippo", name= "Source", title="Source")
 ]

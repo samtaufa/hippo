@@ -1,5 +1,3 @@
-# Overview
-
 Hippo is a distributed version control repository for tracking 
 system configuration files.
 

@@ -1,5 +1,3 @@
-## Source
-
 Development releases and source are online at [github.com/cortesi/hippo](
 http://github.com/cortesi/hippo)
 
