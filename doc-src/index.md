@@ -1,15 +1,17 @@
 Hippo is a distributed version control repository for tracking 
 system configuration files.
 
-Hippo is a thin layer built on top of the open source, distributed
-version control system: [Git](http://git-scm.com/ "Git is 
-a free & open source, distributed version control system") to
-simplify managing files with metadata (permissions and ownership). 
-By maintaining and managing file metadata, the repository can be used to 
-archive and restore a host configuration.
+$!Image("hippo.png", title="Hippo", klass="imgcenter")!$
 
-Conceptually, Hippo serializes metadata before certain Git commands are run, 
-and restores file metadata after others. 
+Use Hippo when you want versioning to allow you to do things 
+such as:
+
+1. Document changes and retain history of
+changes to your configuration file.
+2. Retain the above mentioned history on copies
+you maintain external to the host.
+3. Restore your configuration onto the same other hosts,
+while maintaining the history of your changes.
 
 ## sGittish
 
@@ -19,12 +21,19 @@ and restores file metadata after others.
 a: lively or frisky in action
 </blockquote>
 
+Hippo is a thin layer built on top [Git](http://git-scm.com/ "Git is 
+a free and open source, distributed version control system") to
+simplify managing files with metadata (permissions and ownership). 
+By maintaining and managing file metadata, the repository can be used to 
+archive and restore a host configuration.
+
+Conceptually, Hippo serializes metadata before certain Git commands are run, 
+and restores file metadata after others. 
+
 Because Hippo is a thin layer (wrapper) around [Git](http://git-scm.com/ "Git is 
 a free & open source, distributed version control system"), the terminology
-used in Hippo is very much that used in Git.
-
-Likewise, *git* and related support tools can be used in many parts of the 
-Hippo repository.
+used in Hippo is very much that used in Git. Likewise, *git* and related support 
+tools can be used in many parts of the Hippo repository.
 
 ## Up and Running
 

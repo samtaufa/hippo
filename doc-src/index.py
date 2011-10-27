@@ -35,39 +35,79 @@ ns.sidebar = countershape.widgets.SiblingPageIndex(
 ns.license = file("../LICENSE").read()
 ns.index_contents = file("../README.md").read()
 
+def Image(imagefile, title=None, basepath=None, klass=None, kaption=None):
+        defaultpath="media/"
+
+        if basepath is None:
+            src = """src="%s" """ % model.UrlTo(imagefile)
+        else:
+            src = """src="%s" """ % model.UrlTo(os.path.join(defaultpath, imagefile))
+
+        if title is None:
+            title=""
+        else:
+            title=""" title="%s" """ % title
+        
+        image = """<img %s%s>""" % (src, title)
+        
+        if klass is None:
+            klass =""
+        else:
+            klass=""" class="%s" """ % klass            
+        
+        if kaption is None:
+            kaption = ""
+        else:
+            kaption ="""<p %s>
+    %s 
+</p>""" % (klass, kaption)
+
+        url = image
+        if not klass == "" or not kaption == "":
+            url="""
+<div %s>
+    %s
+    %s
+</div>
+""" % (klass, image, kaption)
+
+        return url
+            
+ns.Image = Image
+
 pages = [
     Page("index.md", 
         title="Overview",
         pageTitle="an Overview"
         ),
-    Page("intro.md", 
-        title="Introduction",
-        pageTitle="a quick Introduction"
+    Page("install.md", 
+        title="Install",
+        pageTitle="a quick Install"
         ),
-    Directory("intro"),
+    Directory("install"),
         
-	Page(
-		"client.md",
-		title="Client",
-		pageTitle = "Client Use"
-	),           
+    Page(
+        "client.md",
+        title="Client",
+        pageTitle = "Client Use"
+    ),           
     Directory("client"),
 
-	Page(
-		"server.md",
-		title="Server",
-		pageTitle = "Server Configuration"
-	),
+    Page(
+        "server.md",
+        title="Server",
+        pageTitle = "Server Configuration"
+    ),
     Directory("server"),
-	
-	Page(
-		"gitweb.md",
-		title="Gitweb",
-		pageTitle = "Gitweb Interface"
-	),
+    
+    Page(
+        "gitweb.md",
+        title="Gitweb",
+        pageTitle = "Gitweb Interface"
+    ),
     Page("admin.md", 
-		title="administrivia",
-		pageTitle = "About Us"
-		),
+        title="administrivia",
+        pageTitle = "About Us"
+        ),
     PythonModule( src="../libhippo", name= "Source", title="Source")
 ]

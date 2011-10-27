@@ -2,34 +2,12 @@ Most Hippo commands are identical to their Git equivalents, and Hippo needs
 root privileges to perform the majority of its functions (and is thus often
 executed as root or with sudo.)
 
-After installing the software, the next major workflow item is to
-
-- [Initialise](#initialise) a new host hippo repository
-
-From then on, the standard workflow surrounds general use of archiving a host
-configuration, such as: 
+After installing the software, general workflow is: 
 
 1. [Add](#add)ing the files we want to archive/track to the repository queue
-2. [Commit](#commit)ting these files and any accepted changes to the repository
-3. [Push](#push) the repository to a remote host
-
-## <a name="initialise"></a> Initialise a new host repository
-
-&#91;Ref: [git-init](http://www.kernel.org/pub/software/scm/git/docs/git-init.html "Create an empty git repository or reinitialize an existing one")
-]
-
-After installing Hippo onto a host, we create the local repository
-for the configuration files using *hippo init*
-
-<!--(block|syntax("bash"))-->
-$ sudo hippo init
-<!--(end)-->
-
-By default, the host-wide git repository lives in **/var/hippo/.git**. 
-Metadata is tracked in **/var/hippo/manifest**.
-
-We now have an empty host configuration repository. There are no 
-configuration files in the repository (not even /etc/passwd.)
+2. [Review](#status) the files indexed
+3. [Commit](#commit)ting these files and any accepted changes to the repository
+4. [Push](#push) the repository to a remote host
 
 ## <a name="add"></a>1. Add a file
 
@@ -62,13 +40,41 @@ and add all configuration files. Hippo then becomes a good tool
 for detecting/noting changes to your configuration settings as
 you install and configure services/applications.
 
+### Oops, don't add that file
+
 &#91;Ref: [undo git add](http://stackoverflow.com/questions/348170/undo-git-add 
 "Is there a way to remove these files from the commit? 'git rm -r --cached <file> ...") | 
-[git-status](http://www.kernel.org/pub/software/scm/git/docs/git-status.html "obtain a summary of what is included by any of the above for the next commit") |
 [git-rm](http://www.kernel.org/pub/software/scm/git/docs/git-rm.html "Remove files from the working tree and the index") |
-[git-commit](http://www.kernel.org/pub/software/scm/git/docs/git-commit.html "Record changes to the repository")
 [git-reset](http://www.kernel.org/pub/software/scm/git/docs/git-reset.html "git reset HEAD <file>...")
 ]
+
+More often than not, I've jumped in and [add]()ed files that I do not
+want to version. *DO NOT* use *'git rm <file>'* to get rid of the 
+index entry. The documentation is quite clear that this will
+*remove* the index entry and *the file*. To *remove only the index*
+entry, use something such as the below:
+
+<!--(block|syntax("bash"))-->
+$ sudo su
+# cd /var/hippo
+# git rm -r --cached <file>...
+<!--(end)-->
+
+Refer the above referenced documentation for more details.
+
+## <a name="status"></a>2. Status
+
+&#91; [git-status](http://www.kernel.org/pub/software/scm/git/docs/git-status.html "obtain a summary of what is included by any of the above for the next commit")]
+
+You can always review what is currently 'snapshotted' or 'staged'
+into hippo/git index, by using the *status* command.
+
+<!--(block|syntax("bash"))-->
+$ sudo hippo status
+<!--(end)-->
+
+From the displayed list, you take note of the files that have changed
+and then make decisions for committing/removing indexed files.
 
 ## <a name="commit"></a>3. Commit
 
