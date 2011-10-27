@@ -7,9 +7,9 @@ this.titlePrefix = ns.titlePrefix + " Server - "
 
 pages = [
             Page(
-                "install.md",
-                title="Install",
-                pageTitle = "Installation"
+                "repository.md",
+                title="Repository",
+                pageTitle = "Repository"
             ),           						
         ]
         
